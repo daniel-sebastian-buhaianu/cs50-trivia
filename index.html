@@ -13,7 +13,7 @@
             function get_feedback(btn) {
                 let new_bgcolor, feedback_text;
 
-                if (btn.id === "a3")
+                if (btn.id === "q1-correct")
                 {
                     new_bgcolor = 'green';
                     feedback_text = 'Correct!';
@@ -42,10 +42,7 @@
                 );   
                 clicked_btn = btn;
             }
-
-            document.addEventListener("DOMContentLoaded", function() {
-                
-            });
+            
         </script>
     </head>
     <body>
@@ -60,16 +57,16 @@
                 <!-- TODO: Add multiple choice question here -->
                 <h3>Who is the president of Romania?</h3>
                 <div class="answer">
-                    <button id="a1" onClick="get_feedback(this)">Ceasca</button>
+                    <button onClick="get_feedback(this)">Ceasca</button>
                 </div>
                 <div class="answer">
-                    <button id="a2" onClick="get_feedback(this)">Coditza</button>
+                    <button onClick="get_feedback(this)">Coditza</button>
                 </div>
                 <div class="answer">
-                    <button id="a3" onClick="get_feedback(this)">Iohannis</button>
+                    <button id="q1-correct" onClick="get_feedback(this)">Iohannis</button>
                 </div>
                 <div class="answer">
-                    <button id="a4" onClick="get_feedback(this)">Buhaianu</button>
+                    <button onClick="get_feedback(this)">Buhaianu</button>
                 </div>
             </div>
 
