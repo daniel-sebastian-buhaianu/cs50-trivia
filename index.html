@@ -7,6 +7,45 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
+            let clicked_btn = null;
+            let default_bgcolor;
+
+            function get_feedback(btn) {
+                let new_bgcolor, feedback_text;
+
+                if (btn.id === "a3")
+                {
+                    new_bgcolor = 'green';
+                    feedback_text = 'Correct!';
+                }
+                else
+                {
+                    new_bgcolor = 'red';
+                    feedback_text = 'Incorrect!';
+                }
+                
+                if (!clicked_btn)
+                {
+                    default_bgcolor = btn.style.backgroundColor;
+                }
+                else
+                {
+                    clicked_btn.style.backgroundColor = default_bgcolor;
+                    clicked_btn.parentNode.removeChild(
+                        clicked_btn.parentNode.lastChild
+                    );
+                }
+
+                btn.style.backgroundColor = new_bgcolor;
+                btn.parentNode.appendChild(
+                        document.createTextNode(feedback_text)
+                );   
+                clicked_btn = btn;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                
+            });
         </script>
     </head>
     <body>
@@ -19,6 +58,19 @@
                 <h2>Part 1: Multiple Choice </h2>
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
+                <h3>Who is the president of Romania?</h3>
+                <div class="answer">
+                    <button id="a1" onClick="get_feedback(this)">Ceasca</button>
+                </div>
+                <div class="answer">
+                    <button id="a2" onClick="get_feedback(this)">Coditza</button>
+                </div>
+                <div class="answer">
+                    <button id="a3" onClick="get_feedback(this)">Iohannis</button>
+                </div>
+                <div class="answer">
+                    <button id="a4" onClick="get_feedback(this)">Buhaianu</button>
+                </div>
             </div>
 
             <div class="section">
