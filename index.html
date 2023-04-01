@@ -32,17 +32,58 @@
                 {
                     clicked_btn.style.backgroundColor = default_bgcolor;
                     clicked_btn.parentNode.removeChild(
-                        clicked_btn.parentNode.lastChild
-                    );
+                        clicked_btn.parentNode.lastChild);
                 }
 
                 btn.style.backgroundColor = new_bgcolor;
                 btn.parentNode.appendChild(
-                        document.createTextNode(feedback_text)
-                );   
+                        document.createTextNode(feedback_text));   
                 clicked_btn = btn;
             }
-            
+
+            let q2_feedback = null;
+            let prev_q2_feedback = null;
+            function check_q2() {
+                let answer = document.getElementById("q2-answer").value;
+                if (answer === "1989")
+                {
+                    q2_feedback = document.createElement("p")
+                        .appendChild(
+                            document.createTextNode("Correct!"));
+                    document.getElementById("q2-answer")
+                        .style.backgroundColor = 'green';
+                }
+                else
+                {
+                    q2_feedback = document.createElement("p")
+                        .appendChild(
+                            document.createTextNode("Incorrect!"));
+                    document.getElementById("q2-answer")
+                        .style.backgroundColor = 'red';
+                }
+                if (prev_q2_feedback === null)
+                {
+                    document.getElementById("q2")
+                        .appendChild(q2_feedback);
+                }
+                else
+                {
+                    let q2 = document.getElementById("q2");
+                    q2.removeChild(q2.lastChild);
+                    q2.appendChild(q2_feedback);
+                }
+                prev_q2_feedback = q2_feedback;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                let btns = document.querySelectorAll("button");
+                for (let i = 0, n = btns.length; i < n; i++)
+                {
+                    btns[i].addEventListener("mouseover", function() {
+                        this.style.cursor = "pointer";
+                    });
+                }
+            })
         </script>
     </head>
     <body>
@@ -74,6 +115,11 @@
                 <h2>Part 2: Free Response</h2>
                 <hr>
                 <!-- TODO: Add free response question here -->
+                <div id="q2">
+                    <h3>When did the Romanian Revolution take place?</h3>
+                </div>
+                <input type="text" id="q2-answer">
+                <button onclick="check_q2()">Submit</button>
             </div>
         </div>
     </body>
